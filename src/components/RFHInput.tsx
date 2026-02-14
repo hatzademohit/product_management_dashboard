@@ -8,8 +8,11 @@ import type {
 } from "react-hook-form";
 
 
-interface RHFInputProps<T extends FieldValues>
-    extends InputHTMLAttributes<HTMLInputElement> {
+export interface RHFInputProps<T extends FieldValues>
+    extends Omit<
+        InputHTMLAttributes<HTMLInputElement>,
+        "size" | "value" | "defaultValue" | "onChange"
+    > {
     name: Path<T>;
     label?: string;
     register: UseFormRegister<T>;
@@ -23,6 +26,7 @@ interface RHFInputProps<T extends FieldValues>
     helperTextClassName?: string;
     registerOptions?: Parameters<UseFormRegister<T>>[1];
     isInvalid?: boolean;
+    size?: "sm" | "lg";
 }
 
 const RHFInput = <T extends FieldValues>({
@@ -42,6 +46,7 @@ const RHFInput = <T extends FieldValues>({
     readOnly,
     registerOptions = {},
     isInvalid,
+    size,
     ...rest
 }: RHFInputProps<T>) => {
     return (
@@ -63,7 +68,7 @@ const RHFInput = <T extends FieldValues>({
 
             <Form.Control
                 id={name}
-                size="sm"
+                size={size}
                 type={type}
                 aria-invalid={!!error}
                 aria-describedby={

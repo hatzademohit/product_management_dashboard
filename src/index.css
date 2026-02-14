@@ -41,6 +41,23 @@ header.navbar {
     overflow: auto;
     scrollbar-width: thin;
     width: 100%;
+    border: 1px solid var(--bs-border-color);
+}
+
+.crud-table table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.crud-table table thead th,
+.crud-table table tbody td {
+    border: 1px solid var(--bs-border-color);
+    border-left: 0;
+    border-top: 0;
+}
+
+.crud-table table tbody tr:last-child td {
+    border-bottom: 0;
 }
 
 .crud-table thead tr th {

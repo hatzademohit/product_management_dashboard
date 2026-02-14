@@ -137,7 +137,11 @@ const CrudTable = ({ columns, data }: CrudTableProps) => {
                     setShowDeleteModal(false);
                 }}
                 title="Delete Product"
-                message={`Are you sure you want to delete ${selectedProduct?.title}?`}
+                message={
+                    <>
+                        Are you sure you want to delete the product <mark>{selectedProduct?.title}</mark>?
+                    </>
+                }
             />
 
         </div>
