@@ -81,7 +81,8 @@ const CrudTable = ({ columns, data }: CrudTableProps) => {
                     <tbody>
                         {paginatedData && paginatedData?.map((row, index) => (
                             <tr key={index}>
-                                <td>{row?.id}</td>
+                                {/* <td>{row?.id}</td> */}
+                                <td>{index + 1}</td>
                                 {columns && columns?.map((col, colIndex) => (
                                     <td key={`row-${row?.id}-col-${colIndex}`}>
                                         {col === 'image' ?
@@ -115,17 +116,28 @@ const CrudTable = ({ columns, data }: CrudTableProps) => {
                     </tbody>
                 </Table>
             </div>
-            <Pagination className="justify-content-end" size="sm">
-                {[...Array(totalPages)].map((_, i) => (
-                    <Pagination.Item
-                        key={i}
-                        active={i + 1 === currentPage}
-                        onClick={() => setCurrentPage(i + 1)}
-                    >
-                        {i + 1}
-                    </Pagination.Item>
-                ))}
-            </Pagination>
+            <div className='d-flex align-items-center justify-content-between'>
+                <p className='m-0'>Showing {currentPage} of {totalPages}, total entries {data?.length}</p>
+                <Pagination className="justify-content-end m-0">
+                    <Pagination.Prev
+                        onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                        disabled={currentPage === 1}
+                    />
+                    {[...Array(totalPages)].map((_, i) => (
+                        <Pagination.Item
+                            key={i}
+                            active={i + 1 === currentPage}
+                            onClick={() => setCurrentPage(i + 1)}
+                        >
+                            {i + 1}
+                        </Pagination.Item>
+                    ))}
+                    <Pagination.Next
+                        onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                        disabled={currentPage === totalPages}
+                    />
+                </Pagination>
+            </div>
 
             <AddEditModal />
             <DeleteConfirmModal

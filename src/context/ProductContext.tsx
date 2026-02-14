@@ -97,7 +97,7 @@ export const ProductProvider = ({ children }: { children: React.ReactNode }) => 
     const addProduct = async (product: Product) => {
         try {
             const res = await axios.post("https://fakestoreapi.com/products", product);
-            setProducts(prev => [...prev, res.data]);
+            setProducts(prev => [res.data, ...prev]);
             setShowModal(false);
             setSelectedProduct(null);
         } catch (error: any) {
