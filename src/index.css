@@ -1,0 +1,98 @@
+* {
+    box-shadow: none !important;
+}
+
+:root {
+    --bs-bg-color: #f8f9fa;
+    --bs-body-color: #212529;
+}
+
+[data-bs-theme="dark"] {
+    --bs-bg-color: #212529;
+    --bs-body-color: #f8f9fa;
+}
+
+body * {
+    scrollbar-width: thin;
+}
+
+header.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+#product-image {
+    max-width: 350px;
+    height: auto;
+}
+
+.form-control-sm {
+    box-shadow: none !important;
+}
+
+.tooltip-inner {
+    max-width: 350px;
+    width: 100%;
+}
+
+.crud-table {
+    max-height: calc(100vh - 170px);
+    overflow: auto;
+    scrollbar-width: thin;
+    width: 100%;
+}
+
+.crud-table thead tr th {
+    position: sticky;
+    top: -1px;
+    background-color: var(--bs-bg-color);
+    z-index: 1;
+}
+
+.crud-table tbody tr td:nth-child(2) {
+    width: 350px;
+}
+
+.crud-table tbody tr td:nth-last-child(2) {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.crud-table tbody tr td:nth-last-child(3) {
+    text-transform: capitalize;
+}
+
+.crud-table tbody tr td:last-child {
+    vertical-align: middle;
+}
+
+.crud-table tbody tr td .product-image {
+    max-width: 30px;
+    height: auto;
+}
+
+.filter {
+    width: 250px;
+    min-width: 250px;
+    height: fit-content;
+    background-color: var(--bs-bg-color);
+    border-radius: 4px;
+    padding: 16px;
+    color: var(--bs-body-color);
+}
+
+.form-check-input {
+    cursor: pointer;
+    box-shadow: none !important;
+}
+
+.filter label {
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.add-edit-modal .modal-body {
+    max-height: calc(100vh - 200px);
+    overflow: auto;
+}
