@@ -95,8 +95,15 @@ export const ProductProvider = ({ children }: { children: React.ReactNode }) => 
     }
 
     const addProduct = async (product: Product) => {
+        const payload = {
+            ...product,
+            image:
+                product.image instanceof File
+                    ? URL.createObjectURL(product.image)
+                    : product.image,
+        };
         try {
-            const res = await axios.post("https://fakestoreapi.com/products", product);
+            const res = await axios.post("https://fakestoreapi.com/products", payload);
             setProducts(prev => [res.data, ...prev]);
             setShowModal(false);
             setSelectedProduct(null);
